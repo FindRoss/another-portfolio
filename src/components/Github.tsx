@@ -14,7 +14,7 @@ function Github() {
   const { isLoading, error, data } = useQuery<Repo[]>({
     queryKey: ['repoData'],
     queryFn: () =>
-      fetch(`https://api.github.com/users/${username}/repos`)
+      fetch(`https://api.github.com/users/${username}/repos?sort=pushed&direction=desc&per_page=5`)
         .then(res => res.json())
   })
 
@@ -22,18 +22,14 @@ function Github() {
 
   if (error) return <div>An error has occurred: {error.message}</div>
 
-  // Sort by recently updated (pushed_at date)
-  const sortedRepos = [...(data ?? [])].sort((a, b) => {
-    return new Date(b.pushed_at).getTime() - new Date(a.pushed_at).getTime();
-  });
 
-  console.log('sortedRepos', sortedRepos);
+  console.log('sortedRepos', data);
 
   return (
     <section className="mt-8">
       <div className="grid grid-cols-3 gap-4">
         {
-          sortedRepos?.map(repo => {
+          data?.map(repo => {
             const { language, name, pushed_at, html_url } = repo;
 
             return (
