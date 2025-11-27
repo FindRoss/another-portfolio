@@ -15,7 +15,7 @@ function Hero() {
             </h1>
           </div>
           <p className="mx-auto max-w-2xl text-lg text-gray-600 leading-8">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae atque excepturi in ea eos labore vitae laboriosam! Minima fugit nesciunt obcaecati delectus reprehenderit, earum deserunt aperiam iste nihil soluta similique.
+            View my repositories on GitHub or instead search for your own GitHub repo with your username, and view your own.
           </p>
         </div>
       </div>
