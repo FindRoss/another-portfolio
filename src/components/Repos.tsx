@@ -6,10 +6,11 @@ import type { Repository } from '../types/repository';
 
 function Repos() {
   const [username, setUsername] = useState('findross');
+  const [inputValue, setInputValue] = useState('');
   const [perPage] = useState(6);
 
   const { data, isLoading, error } = useQuery<Repository[]>({
-    queryKey: ['repos'],
+    queryKey: ['repos', username],
     queryFn: () => getUserRepos(username, perPage)
   });
 
@@ -18,24 +19,27 @@ function Repos() {
 
   if (error) return <div>An error has occurred: {error.message}</div>
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUsername(e.target.value)
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value)
   }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log('well up to here... everything is good. ', username)
-    // getUserRepos(username, perPage)
+    if (inputValue === "") return;
+    setUsername(inputValue)
+
   }
 
   return (
     <section className="mt-8">
       <form onSubmit={handleSubmit} className="flex gap-2">
         <input
+          required
           type="text"
           placeholder="Search for your own repository on Github.com"
-          className="flex-1 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent"
-          onChange={(e) => handleChange(e)}
+          className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent"
+          value={inputValue}
+          onChange={handleInputChange}
         />
         <button
           type="submit"

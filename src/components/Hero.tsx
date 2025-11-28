@@ -2,7 +2,7 @@ import { FaGithubSquare } from "react-icons/fa"
 
 function Hero() {
   return (
-    <div className="relative bg-linear-to-b from-white to-gray-50 py-24 sm:py-32">
+    <div className="relative bg-linear-to-b from-white to-gray-50 py-24 sm:py-32 rounded-lg">
       <div className="mx-auto max-w-4xl px-6 lg:px-8">
         <div className="space-y-8 lg:text-center">
           <div className="flex items-center justify-center gap-2 lg:justify-center">
@@ -11,7 +11,7 @@ function Hero() {
           </div>
           <div>
             <h1 className="text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              See everything I am building
+              See everything users are building
             </h1>
           </div>
           <p className="mx-auto max-w-2xl text-lg text-gray-600 leading-8">

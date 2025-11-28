@@ -25,7 +25,7 @@ const Repo = ({ repo }: RepoProps) => {
   const { language, name, pushed_at, html_url } = repo;
 
   return (
-    <div className="bg-linear-to-br from-white to-gray-50 border border-gray-200 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow" key={name}>
+    <div className="border border-gray-200 p-6 rounded-lg" key={name}>
       <h3 className="text-xl font-bold text-gray-900 mb-4">{name}</h3>
 
       <div className="space-y-4">
